@@ -289,6 +289,29 @@ void rotate(int* nums, int numsSize, int k) {
 	reverse(nums, k, numsSize - 1);
 }
 
+// 278. 第一个错误的版本
+bool isBadVersion(int version);
+
+int firstBadVersion(int n) {
+	if (n == 1) return n;
+	long left = 1, right = n, p;
+	while (left <= right)
+	{
+		p = left + right >> 1;
+		if (!isBadVersion(p))
+		{
+			n = p;
+			left = p + 1;
+		}
+		else
+		{
+			if (!isBadVersion(p - 1)) break;
+			right = p - 1;
+		}
+	}
+	return p;
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
