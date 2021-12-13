@@ -396,6 +396,17 @@ int search(int* nums, int numsSize, int target) {
 	return -1;
 }
 
+// 746. 使用最小花费爬楼梯
+int minCostClimbingStairs(int* cost, int costSize) {
+	int p1 = 0, p2 = 0, g;
+	for (int i = 2; i <= costSize; i++) {
+		g = min(p1 + cost[i - 2], p2 + cost[i - 1]);
+		p1 = p2;
+		p2 = g;
+	}
+	return p2;
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
