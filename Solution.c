@@ -308,4 +308,24 @@ struct ListNode* mergeKLists(struct ListNode** lists, int listsSize) {
 	return lists[0];
 }
 
+// 19. 删除链表的倒数第 N 个结点
+struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
+	struct ListNode* l1 = head, * l2 = head;
+	int i = 0;
+	while (l1->next != NULL)
+	{
+		l1 = l1->next;
+		if (i >= n)
+			l2 = l2->next;
+		i++;
+	}
+	if (i < n)
+		head = head->next;
+	else if (n == 1)
+		l2->next = NULL;
+	else
+		l2->next = l2->next->next;
+	return head;
+}
+
 #pragma endregion
