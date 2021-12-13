@@ -336,6 +336,18 @@ void moveZeroes(int* nums, int numsSize) {
 	}
 }
 
+// 344. 反转字符串
+void reverseString(char* s, int sSize) {
+	while (s < s + sSize - 1)
+	{
+		*s = *s ^ *(s + sSize - 1);
+		*(s + sSize - 1) = *(s + sSize - 1) ^ *s;
+		*s = *s ^ *(s + sSize - 1);
+		sSize -= 2;
+		s++;
+	}
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
