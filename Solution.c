@@ -328,4 +328,13 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
 	return head;
 }
 
+// 876. 链表的中间结点
+struct ListNode* middleNode(struct ListNode* head) {
+	int length = getListNodeLength(head);
+	length = length >> 1;
+	for (int i = 0; i < length; i++)
+		head = head->next;
+	return head;
+}
+
 #pragma endregion
