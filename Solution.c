@@ -102,6 +102,25 @@ int majorityElement(int* nums, int numsSize) {
 	return m;
 }
 
+// 136. 只出现一次的数字
+int singleNumber(int* nums, int numsSize) {
+	int p = 0;
+	for (int i = 0; i < numsSize; i++)
+		p ^= nums[i];
+	return p;
+}
+
+// 53. 最大子数组和
+int maxArea(int* height, int heightSize) {
+	int n1 = 0, n2 = heightSize - 1;
+	int size = 0;
+	while (n1 < n2)
+		size = height[n1] < height[n2] ?
+		max(size, (n2 - n1) * height[n1++]) :
+		max(size, (n2 - n1) * height[n2--]);
+	return size;
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
