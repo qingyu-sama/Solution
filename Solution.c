@@ -251,4 +251,9 @@ struct ListNode* swapPairs(struct ListNode* head) {
 	return head;
 }
 
+// 237. 删除链表中的节点
+void deleteNode(struct ListNode* node) {
+	*node = *(node->next);
+}
+
 #pragma endregion
