@@ -10,6 +10,8 @@ int min(int a, int b) {
 	return a < b ? a : b;
 }
 
+#pragma region 题目提供的数据结构
+
 struct Node {
 	int val;
 	struct Node* left;
@@ -27,6 +29,8 @@ struct TreeNode {
 	struct TreeNode* left;
 	struct TreeNode* right;
 };
+
+#pragma endregion
 
 #pragma region 一般题
 
