@@ -359,6 +359,30 @@ int fib(int n) {
 	return p2;
 }
 
+// 557. 反转字符串中的单词 III
+char* reverseWords(char* s) {
+	int p1 = 0, p2, p = 0;
+	int length = strlen(s);
+	while (p < length)
+	{
+		p1 = p;
+		p2 = p1 + 1;
+		while (p2 < length && s[p2] != ' ')
+			p2++;
+		p = p2 + 1;
+		p2--;
+		while (p1 < p2)
+		{
+			s[p1] = s[p1] ^ s[p2];
+			s[p2] = s[p2] ^ s[p1];
+			s[p1] = s[p1] ^ s[p2];
+			p1++;
+			p2--;
+		}
+	}
+	return s;
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
