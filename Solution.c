@@ -144,15 +144,11 @@ int search(int* nums, int numsSize, int target) {
 		m = l + r >> 1;
 		if (nums[m] == target) return m;
 		if (nums[m] >= nums[0])
-			if (nums[m] < target)
-				l = m + 1;
-			else if (target >= nums[0])
-				r = m - 1;
+			if (nums[m] < target) l = m + 1;
+			else if (target >= nums[0]) r = m - 1;
 			else l = m + 1;
-		else if (nums[m] > target)
-			r = m - 1;
-		else if (target >= nums[0])
-			r = m - 1;
+		else if (nums[m] > target) r = m - 1;
+		else if (target >= nums[0]) r = m - 1;
 		else l = m + 1;
 	}
 	return -1;
