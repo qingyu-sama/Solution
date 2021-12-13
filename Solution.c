@@ -256,4 +256,48 @@ void deleteNode(struct ListNode* node) {
 	*node = *(node->next);
 }
 
+// 21. 合并两个有序链表
+struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) {
+	if (l1 == NULL) return l2;
+	if (l2 == NULL) return l1;
+	struct ListNode* p1 = l1, * p2 = l2;
+	while (l2 != NULL)
+	{
+		if (p1->val > p2->val)
+		{
+			p2 = p2->next;
+			l2->next = p1;
+			p1 = l2;
+			l1 = p1;
+			l2 = p2;
+		}
+		else if (p1->val == p2->val)
+		{
+			p2 = p2->next;
+			l2->next = p1->next;
+			p1->next = l2;
+			p1 = p1->next;
+			l2 = p2;
+		}
+		else
+		{
+			if (p1->next == NULL)
+			{
+				p1->next = p2;
+				return l1;
+			}
+			else if (p1->next->val > p2->val)
+			{
+				p2 = p2->next;
+				l2->next = p1->next;
+				p1->next = l2;
+				p1 = p1->next;
+				l2 = p2;
+			}
+			else p1 = p1->next;
+		}
+	}
+	return l1;
+}
+
 #pragma endregion
