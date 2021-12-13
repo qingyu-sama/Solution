@@ -208,6 +208,16 @@ int searchInsert(int* nums, int numsSize, int target) {
 	return -1;
 }
 
+// 53. 最大子数组和
+int maxSubArray(int* nums, int numsSize) {
+	int pre = 0, maxAns = nums[0];
+	for (int i = 0; i < numsSize; i++) {
+		pre = max(pre + nums[i], nums[i]);
+		maxAns = max(maxAns, pre);
+	}
+	return maxAns;
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
