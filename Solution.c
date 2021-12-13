@@ -234,6 +234,21 @@ bool hasCycle(struct ListNode* head) {
 	return false;
 }
 
-// 142. 环形链表 II
+// 24. 两两交换链表中的节点
+struct ListNode* swapPairs(struct ListNode* head) {
+	struct ListNode* p = head;
+	while (p != NULL && p->next != NULL)
+	{
+		if (p->next != NULL)
+		{
+			p->val = p->val ^ p->next->val;
+			p->next->val = p->next->val ^ p->val;
+			p->val = p->val ^ p->next->val;
+			p = p->next->next;
+		}
+		else break;
+	}
+	return head;
+}
 
 #pragma endregion
