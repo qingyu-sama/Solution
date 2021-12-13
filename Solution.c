@@ -407,6 +407,28 @@ int minCostClimbingStairs(int* cost, int costSize) {
 	return p2;
 }
 
+// 977. 有序数组的平方
+int* sortedSquares(int* nums, int numsSize, int* returnSize) {
+	int* p1 = nums, * p2 = nums + numsSize - 1;
+	int* ns = (int*)malloc(sizeof(int) * numsSize) + numsSize;
+	while (p1 <= p2)
+	{
+		ns--;
+		if (abs(*p1) > abs(*p2))
+		{
+			*ns = *p1 * *p1;
+			p1++;
+		}
+		else
+		{
+			*ns = *p2 * *p2;
+			p2--;
+		}
+	}
+	*returnSize = numsSize;
+	return ns;
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
