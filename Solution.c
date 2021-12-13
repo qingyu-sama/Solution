@@ -300,4 +300,12 @@ struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) {
 	return l1;
 }
 
+// 23. 合并K个升序链表
+struct ListNode* mergeKLists(struct ListNode** lists, int listsSize) {
+	if (listsSize == 0) return NULL;
+	for (int i = listsSize - 1; i > 0; i--)
+		lists[0] = mergeTwoLists(lists[0], lists[i]);
+	return lists[0];
+}
+
 #pragma endregion
