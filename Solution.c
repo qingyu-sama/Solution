@@ -59,6 +59,33 @@ char* convert(char* s, int numRows) {
 	return c;
 }
 
+// 75. 颜色分类
+void sortColors(int* nums, int numsSize) {
+	int l = 0, r = numsSize - 1;
+	for (int i = 0; i <= r; i++)
+	{
+		if (nums[r] == 2) r--;
+		if (nums[l] == 0) {
+			l++;
+			i = l;
+		}
+		if (nums[l] != 0 && nums[r] != 2) {
+			if (nums[i] == 2) {
+				int t = nums[r];
+				nums[r] = nums[i];
+				nums[i] = t;
+				r--;
+			}
+			if (nums[i] == 0) {
+				int t = nums[i];
+				nums[i] = nums[l];
+				nums[l] = t;
+				l++;
+			}
+		}
+	}
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
