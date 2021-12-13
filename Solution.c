@@ -271,6 +271,24 @@ int* twoSum(int* numbers, int numbersSize, int target, int* returnSize) {
 	return ns;
 }
 
+// 189. 轮转数组
+void reverse(int* nums, int start, int end) {
+	while (start < end) {
+		nums[start] = nums[start] ^ nums[end];
+		nums[end] = nums[end] ^ nums[start];
+		nums[start] = nums[start] ^ nums[end];
+		start += 1;
+		end -= 1;
+	}
+}
+
+void rotate(int* nums, int numsSize, int k) {
+	k %= numsSize;
+	reverse(nums, 0, numsSize - 1);
+	reverse(nums, 0, k - 1);
+	reverse(nums, k, numsSize - 1);
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
