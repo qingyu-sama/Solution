@@ -452,6 +452,16 @@ char* truncateSentence(char* s, int k) {
 	return s;
 }
 
+// 1518. 换酒问题
+int numWaterBottles(int numBottles, int numExchange) {
+	int bottles = numBottles;
+	while (numBottles >= numExchange) {
+		bottles += numBottles / numExchange;
+		numBottles = numBottles / numExchange + numBottles % numExchange;
+	}
+	return bottles;
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
