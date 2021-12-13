@@ -86,6 +86,22 @@ void sortColors(int* nums, int numsSize) {
 	}
 }
 
+// 169. 多数元素
+int majorityElement(int* nums, int numsSize) {
+	int m = nums[0];
+	int vc = 0;
+	for (int i = 0; i < numsSize; i++)
+	{
+		if (nums[i] == m) vc++;
+		else vc--;
+		if (vc == 0) {
+			m = nums[i];
+			vc = 1;
+		}
+	}
+	return m;
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
