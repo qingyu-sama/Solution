@@ -158,7 +158,18 @@ int search(int* nums, int numsSize, int target) {
 	return -1;
 }
 
-//
+// 26. 删除有序数组中的重复项
+int removeDuplicates(int* nums, int numsSize) {
+	if (numsSize <= 1) return numsSize;
+	int l = 0;
+	for (int i = 0; i < numsSize; i++) {
+		if (nums[i] != nums[l]) {
+			l++;
+			nums[l] = nums[i];
+		}
+	}
+	return l + 1;
+}
 
 #pragma endregion
 
