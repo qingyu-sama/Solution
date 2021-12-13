@@ -136,6 +136,28 @@ int findMin(int* nums, int numsSize) {
 	return nums[m];
 }
 
+// 33. 搜索旋转排序数组
+int search(int* nums, int numsSize, int target) {
+	int l = 0, m, r = numsSize - 1;
+	while (l <= r)
+	{
+		m = l + r >> 1;
+		if (nums[m] == target) return m;
+		if (nums[m] >= nums[0])
+			if (nums[m] < target)
+				l = m + 1;
+			else if (target >= nums[0])
+				r = m - 1;
+			else l = m + 1;
+		else if (nums[m] > target)
+			r = m - 1;
+		else if (target >= nums[0])
+			r = m - 1;
+		else l = m + 1;
+	}
+	return -1;
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
