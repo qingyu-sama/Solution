@@ -229,6 +229,26 @@ int climbStairs(int n) {
 	return p2;
 }
 
+// 74. ËÑË÷¶şÎ¬¾ØÕó
+bool searchMatrix(int** matrix, int matrixSize, int* matrixColSize, int target) {
+	int p1 = 0, p2 = matrixColSize[0] - 1, len = matrixSize;
+	while (p1 < len && p2 >= 0)
+		if (matrix[p1][p2] == target) return true;
+		else if (matrix[p1][p2] > target) {
+			int l = 0;
+			while (l <= p2)
+			{
+				len = l + p2 >> 1;
+				if (matrix[p1][len] == target) return true;
+				if (matrix[p1][len] > target) p2 = len - 1;
+				else l = len + 1;
+			}
+			return false;
+		}
+		else p1++;
+	return false;
+}
+
 #pragma endregion
 
 #pragma region ¶ş²æÊ÷Ìâ
