@@ -442,6 +442,16 @@ int tribonacci(int n) {
 	return p3;
 }
 
+// 1816. ½Ø¶Ï¾ä×Ó
+char* truncateSentence(char* s, int k) {
+	unsigned short i = 0;
+	while (s[i] != '\0')
+		if (s[i] == ' ' && k-- == 1) break;
+		else i++;
+	s[i] = '\0';
+	return s;
+}
+
 #pragma endregion
 
 #pragma region ¶ş²æÊ÷Ìâ
