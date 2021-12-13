@@ -249,6 +249,28 @@ bool searchMatrix(int** matrix, int matrixSize, int* matrixColSize, int target) 
 	return false;
 }
 
+// 167. 两数之和 II - 输入有序数组
+int* twoSum(int* numbers, int numbersSize, int target, int* returnSize) {
+	int* ns = (int*)malloc(sizeof(int) * 2);
+	*returnSize = 2;
+	int p1 = 0, p2 = numbersSize - 1, n;
+	while (p1 < p2)
+	{
+		n = numbers[p1] + numbers[p2];
+		if (n > target)
+			p2--;
+		else if (n < target)
+			p1++;
+		else
+		{
+			ns[0] = p1 + 1;
+			ns[1] = p2 + 1;
+			break;
+		}
+	}
+	return ns;
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
