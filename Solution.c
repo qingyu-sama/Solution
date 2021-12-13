@@ -174,4 +174,52 @@ struct ListNode* oddEvenList(struct ListNode* head) {
 	return head;
 }
 
+// 203. 移除链表元素
+struct ListNode* removeElements(struct ListNode* head, int val) {
+	if (head == NULL) return head;
+	while (head != NULL && head->val == val)
+		head = head->next;
+	struct ListNode* p = head;
+	while (p != NULL && p->next != NULL)
+	{
+		if (p->next->val == val)
+			p->next = p->next->next;
+		else
+			p = p->next;
+	}
+	return head;
+}
+
+// 160. 相交链表
+struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB) {
+	if (headA == NULL || headB == NULL) return NULL;
+	struct ListNode* p1 = headA, * p2 = headB;
+	while (p1 != p2)
+	{
+		p1 = p1 == NULL ? headB : p1->next;
+		p2 = p2 == NULL ? headA : p2->next;
+	}
+	return p1;
+}
+
+// 141. 环形链表
+struct ListNode* detectCycle(struct ListNode* head) {
+	struct ListNode* p1 = head, * p2 = head;
+	while (p1 != NULL && p1->next != NULL)
+	{
+		p1 = p1->next->next;
+		p2 = p2->next;
+		if (p1 == p2) goto CON;
+	}
+	return NULL;
+CON:
+	p1 = head;
+	while (p1 != p2)
+	{
+		p1 = p1->next;
+		p2 = p2->next;
+	}
+	return p1;
+}
+
 #pragma endregion
