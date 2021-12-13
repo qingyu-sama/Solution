@@ -383,6 +383,19 @@ char* reverseWords(char* s) {
 	return s;
 }
 
+// 704. 二分查找
+int search(int* nums, int numsSize, int target) {
+	int l = 0, m, r = numsSize - 1;
+	while (l <= r)
+	{
+		m = l + r >> 1;
+		if (nums[m] == target) return m;
+		else if (nums[m] > target) r = m - 1;
+		else l = m + 1;
+	}
+	return -1;
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
