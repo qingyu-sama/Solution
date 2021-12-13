@@ -121,6 +121,21 @@ int maxArea(int* height, int heightSize) {
 	return size;
 }
 
+// 153. 寻找旋转排序数组中的最小值
+int findMin(int* nums, int numsSize) {
+	if (numsSize == 1) return nums[0];
+	if (nums[0] < nums[numsSize - 1]) return nums[0];
+	int l = 1, m, r = numsSize - 1;
+	while (l <= r)
+	{
+		m = l + r >> 1;
+		if (nums[m] < nums[m - 1]) return nums[m];
+		if (nums[m] > nums[0]) l = m + 1;
+		else r = m - 1;
+	}
+	return nums[m];
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
