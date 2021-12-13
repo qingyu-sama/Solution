@@ -179,6 +179,35 @@ int removeElement(int* nums, int numsSize, int val) {
 	return l + 1;
 }
 
+// 35. 搜索插入位置
+int searchInsert(int* nums, int numsSize, int target) {
+	if (numsSize == 1) nums[0] < target ? 1 : 0;
+	int left = 0, right = numsSize - 1, p, length = right;
+	while (left <= right)
+	{
+		p = left + right >> 1;
+		if (nums[p] == target)
+			return p;
+		else if (nums[p] > target)
+		{
+			if (p == 0)
+				return 0;
+			else if (nums[p - 1] < target)
+				return p;
+			right = p - 1;
+		}
+		else if (nums[0] < target)
+		{
+			if (p == length)
+				return p + 1;
+			else if (nums[p + 1] > target)
+				return p + 1;
+			left = p + 1;
+		}
+	}
+	return -1;
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
