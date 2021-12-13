@@ -312,6 +312,30 @@ int firstBadVersion(int n) {
 	return p;
 }
 
+// 283. “∆∂Ø¡„
+void moveZeroes(int* nums, int numsSize) {
+	int p1 = 0, p2 = numsSize - 1;
+	while (p1 < numsSize)
+	{
+		if (nums[p1] == 0)
+		{
+			p2 = p1 + 1;
+			while (p2 < numsSize)
+			{
+				if (nums[p2] != 0)
+				{
+					nums[p1] = nums[p2];
+					nums[p2] = 0;
+					break;
+				}
+				p2++;
+			}
+			if (p2 == numsSize) return;
+		}
+		p1++;
+	}
+}
+
 #pragma endregion
 
 #pragma region ∂˛≤Ê ˜Ã‚
