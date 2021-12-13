@@ -112,6 +112,27 @@ bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
 	return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
 }
 
+// 617. 合并二叉树
+void mergeTreesDFS(struct TreeNode* p1, struct TreeNode* p2)
+{
+	p1->val += p2->val;
+	if (p2->left != NULL)
+		if (p1->left == NULL)
+			p1->left = p2->left;
+		else mergeTreesDFS(p1->left, p2->left);
+	if (p2->right != NULL)
+		if (p1->right == NULL)
+			p1->right = p2->right;
+		else mergeTreesDFS(p1->right, p2->right);
+}
+
+struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2) {
+	if (root1 == NULL) return root2;
+	if (root2 == NULL) return root1;
+	mergeTreesDFS(root1, root2);
+	return root1;
+}
+
 #pragma endregion
 
 #pragma region 链表题
