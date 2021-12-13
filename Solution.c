@@ -171,6 +171,18 @@ int removeDuplicates(int* nums, int numsSize) {
 	return l + 1;
 }
 
+// 27. ÒÆ³ıÔªËØ
+int removeElement(int* nums, int numsSize, int val) {
+	int l = numsSize - 1;
+	for (int i = l; i >= 0; i--) {
+		if (nums[i] == val) {
+			nums[i] = nums[l];
+			l--;
+		}
+	}
+	return l + 1;
+}
+
 #pragma endregion
 
 #pragma region ¶ş²æÊ÷Ìâ
