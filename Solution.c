@@ -141,7 +141,7 @@ int findMin(int* nums, int numsSize) {
 }
 
 // 33. 搜索旋转排序数组
-int search(int* nums, int numsSize, int target) {
+int searchRotate(int* nums, int numsSize, int target) {
 	int l = 0, m, r = numsSize - 1;
 	while (l <= r)
 	{
@@ -294,7 +294,9 @@ void rotate(int* nums, int numsSize, int k) {
 }
 
 // 278. 第一个错误的版本
-bool isBadVersion(int version);
+bool isBadVersion(int version) {
+	return true;
+}
 
 int firstBadVersion(int n) {
 	if (n == 1) return n;
@@ -543,6 +545,13 @@ struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2) {
 #pragma endregion
 
 #pragma region 链表题
+
+int getListNodeLength(struct ListNode* head) {
+	int c = 0;
+	while (head != NULL && c++ == c)
+		head = head->next;
+	return c;
+}
 
 // 82. 删除排序链表中的重复元素 II
 struct ListNode* deleteDuplicates(struct ListNode* head) {
