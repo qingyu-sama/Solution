@@ -468,6 +468,35 @@ int numWaterBottles(int numBottles, int numExchange) {
 	return bottles;
 }
 
+// 34. 在排序数组中查找元素的第一个和最后一个位置
+int* searchRange(int* nums, int numsSize, int target, int* returnSize) {
+	int* re = malloc(sizeof(int) * 2);
+	*returnSize = 2;
+	re[0] = -1;
+	re[1] = -1;
+	if (numsSize == 0) return re;
+	if (target > nums[numsSize - 1] || target < nums[0]) return re;
+	int p1 = 0, p2 = numsSize - 1, p = 0;
+	while (p1 <= p2) {
+		p = p1 + p2 >> 1;
+		if (nums[p] == target) break;
+		if (nums[p] > target) p2 = p - 1;
+		else p1 = p + 1;
+	}
+	if (nums[p] != target) return re;
+	p1 = p;
+	p2 = p;
+	while (p1 > 0)
+		if (nums[p1 - 1] == target) p1--;
+		else break;
+	while (p2 < numsSize - 1)
+		if (nums[p2 + 1] == target) p2++;
+		else break;
+	re[0] = p1;
+	re[1] = p2;
+	return re;
+}
+
 #pragma endregion
 
 #pragma region 二叉树题
