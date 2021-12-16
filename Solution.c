@@ -582,6 +582,18 @@ int getListNodeLength(struct ListNode* head) {
 	return c;
 }
 
+// 剑指 Offer 06. 从尾到头打印链表
+int* reversePrint(struct ListNode* head, int* returnSize) {
+	*returnSize = getListNodeLength(head);
+	int* nums = (int*)malloc(sizeof(int) * (*returnSize));
+	for (int i = *returnSize - 1; i >= 0; i--)
+	{
+		nums[i] = head->val;
+		head = head->next;
+	}
+	return nums;
+}
+
 // 82. 删除排序链表中的重复元素 II
 struct ListNode* deleteDuplicates(struct ListNode* head) {
 	struct ListNode* p1 = head, * p2 = head;
