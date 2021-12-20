@@ -577,9 +577,25 @@ struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2) {
 
 int getListNodeLength(struct ListNode* head) {
 	int c = 0;
-	while (head != NULL && c++ == c)
+	while (head != NULL && c++ >= 0)
 		head = head->next;
 	return c;
+}
+
+// 61. 旋转链表
+struct ListNode* rotateRight(struct ListNode* head, int k) {
+	if (head == NULL) return head;
+	k %= getListNodeLength(head);
+	struct ListNode* p1 = head, * p2 = head;
+	while (p2->next != NULL)
+	{
+		p2 = p2->next;
+		if (k-- <= 0) p1 = p1->next;
+	}
+	p2->next = head;
+	head = p1->next;
+	p1->next = NULL;
+	return head;
 }
 
 // 剑指 Offer 06. 从尾到头打印链表
